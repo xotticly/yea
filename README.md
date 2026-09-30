@@ -1,0 +1,27 @@
+# MyClient
+
+A Fabric utility client. 25+ modules, settings system, HUD, ESP/Tracers, ClickGUI-free.
+
+## Build option A - GitHub (recommended, no installs needed)
+1. Create a new repo on github.com and upload ALL these files (keep the folder structure)
+2. Go to the Actions tab - the workflow runs automatically
+3. When it finishes (green check), click it -> Artifacts -> download `myclient-jar`
+4. Put the jar in .minecraft/mods/ (you need Fabric Loader for your MC version installed)
+
+## Build option B - your PC
+1. Install JDK 21 (Temurin) and Gradle 8.8+
+2. Run: gradle build
+3. Jar appears in build/libs/
+
+## Changing Minecraft version
+Edit gradle.properties. Check https://fabricmc.net/develop/ for valid
+yarn_mappings / loader / fabric-api versions for your MC version.
+NOTE: the code targets 1.21.1 mappings - newer versions may have renamed methods.
+
+## Version note (1.21.11)
+This targets 1.21.11: yarn 1.21.11+build.4, loader 0.18.4, fabric-api 0.141.3+1.21.11, loom 1.15.
+1.21.11 is the LAST obfuscated MC version — after it (26.x) Mojang ships deobfuscated code.
+WARNING: rendering APIs changed between 1.21.1 and 1.21.11 (world render events were
+redesigned in 1.21.10). ESP/Tracers/ChestESP and HUD modules may need small rewrites.
+If gradle build fails, paste the error and the method name can be looked up in the
+yarn 1.21.11 javadoc: https://maven.fabricmc.net/docs/yarn-1.21.11+build.4/
